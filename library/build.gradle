@@ -1,0 +1,23 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+repositories {
+    mavenCentral()
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //设置插件的GAV参数
+            pom.groupId = 'com.custom.gradle.plugin'
+            pom.artifactId = 'time'
+            pom.version = '1.0.0'
+            //文件发布到下面目录
+            repository(url: uri('../repo'))
+        }
+    }
+}
